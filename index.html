@@ -2,231 +2,282 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Special Surprise</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4);
-            background-size: 600% 600%;
-            animation: gradientShift 12s ease infinite;
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: #fff;
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Special Surprise</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4);
+      background-size: 600% 600%;
+      animation: gradientShift 12s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff;
+      margin: 0;
+    }
 
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
 
-            50% {
-                background-position: 100% 50%;
-            }
+      50% {
+        background-position: 100% 50%;
+      }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        .container {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
+    .container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-        h1 {
-            font-size: clamp(1.8em, 6vw, 3em);
-            margin-bottom: 20px;
-            color: #fff5f7;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-            animation: fadeIn 2s ease forwards;
-        }
+    h1 {
+      font-size: clamp(1.6em, 6vw, 2.5em);
+      margin-bottom: 15px;
+      color: #fff5f7;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      animation: fadeIn 2s ease forwards;
+    }
 
-        p {
-            font-size: clamp(1em, 4vw, 1.3em);
-            margin: 10px 0;
-            opacity: 0;
-            animation: fadeUp 1.5s ease forwards;
-        }
+    p {
+      font-size: clamp(0.95em, 4vw, 1.1em);
+      margin: 8px 0;
+      opacity: 0;
+      animation: fadeUp 1.5s ease forwards;
+      line-height: 1.5;
+    }
 
-        p:nth-child(2) {
-            animation-delay: 1s;
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
 
-        p:nth-child(3) {
-            animation-delay: 2s;
-        }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-        p:nth-child(4) {
-            animation-delay: 3s;
-        }
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    .flowers {
+      margin: 25px 0;
+      width: 150px;
+      max-width: 70%;
+      animation: float 3s ease-in-out infinite;
+    }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
 
-        .flowers {
-            margin: 40px 0;
-            width: 200px;
-            max-width: 80%;
-            animation: float 3s ease-in-out infinite;
-        }
+    .section {
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      max-width: 90%;
+      width: 100%;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 2s ease forwards;
+    }
 
-        @keyframes float {
+    .section h2 {
+      font-size: clamp(1.2em, 5vw, 1.8em);
+      margin-bottom: 12px;
+      color: #ffe4e9;
+    }
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+    .section p {
+      font-size: clamp(0.95em, 4vw, 1.05em);
+      line-height: 1.5;
+    }
 
-            50% {
-                transform: translateY(-15px);
-            }
-        }
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      font-size: 18px;
+      top: -20px;
+      z-index: 1000;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
 
-        .sorry-section {
-            margin-top: 60px;
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
-            width: 100%;
-            backdrop-filter: blur(6px);
-            animation: fadeIn 2s ease forwards;
-        }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.8;
+      }
+    }
 
-        .sorry-section h2 {
-            font-size: clamp(1.5em, 5vw, 2.5em);
-            margin-bottom: 20px;
-            color: #ffe4e9;
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-        }
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: 0;
+      font-size: 16px;
+      animation: rise 6s linear forwards;
+      pointer-events: none;
+      color: #ffd1dc;
+    }
 
-        .sorry-section p {
-            font-size: clamp(1em, 4vw, 1.2em);
-            color: #fff8f9;
-            line-height: 1.6;
-        }
+    @keyframes rise {
+      to {
+        transform: translateY(-100vh) scale(1.3);
+        opacity: 0;
+      }
+    }
 
-        /* Flower confetti */
-        .confetti {
-            position: fixed;
-            font-size: 24px;
-            top: -20px;
-            z-index: 1000;
-            pointer-events: none;
-            animation: fall linear forwards;
-        }
+    /* Start button */
+    .start-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 10px;
+    }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.8;
-            }
-        }
+    .start-btn button {
+      padding: 12px 28px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff9770);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        /* Surprise Button */
-        .start-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+    .start-btn button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
 
-        .start-btn button {
-            padding: 15px 40px;
-            font-size: 1.5em;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff9770);
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* iPhone 15 Pro Max specific adjustments */
+    @media (max-width: 450px) {
+      h1 {
+        font-size: 1.8em;
+      }
 
-        .start-btn button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-        }
-    </style>
+      .flowers {
+        width: 120px;
+      }
+
+      .start-btn button {
+        font-size: 1.1em;
+        padding: 12px 22px;
+      }
+
+      .section {
+        padding: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="start-btn">
-        <button onclick="showSurprise()">🎁 Tap for Surprise 🎁</button>
+  <div class="start-btn">
+    <button onclick="showSurprise()">🎁 Tap for Surprise 🎁</button>
+  </div>
+
+  <div class="container">
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <p>Wishing you good health, peace, and endless happiness.</p>
+    <p>May this year bring success in every step you take.</p>
+    <p>May your days be filled with kindness, smiles, and hope.</p>
+    <p>Wishing you strong friendships, supportive people, and positivity always.</p>
+    <p>Keep believing in yourself, because you’re capable of great things.</p>
+    <p>Here’s to growth, achievements, and joyful memories ahead.</p>
+
+    <img src="r.png" alt="Flowers" class="flowers">
+
+    <div class="section">
+      <h2>💌 Sorry...</h2>
+      <p>If at any moment I have hurt you, spoken wrongly, or made you feel distant, I want to sincerely apologize.</p>
+      <p>You are valued, respected, and appreciated more than words can describe. May this new year be filled only with smiles and peace. 🌼</p>
     </div>
 
-    <div class="container">
-        <h1>🌸 Happy Birthday! 🎉 🌸</h1>
-        <p>Wishing you lots of joy, love, and laughter today.</p>
-        <p>May this year bring you all the happiness you deserve.</p>
-
-        <img src="r.png" alt="Flowers" class="flowers">
-
-        <div class="sorry-section">
-            <h2>💌 Sorry...</h2>
-            <p>
-                If I ever hurt you, or if things felt distant...
-                I just want to say I’m really sorry.
-                You mean more than words can capture,
-                and I wish only smiles for you. 🌹✨
-            </p>
-        </div>
+    <div class="section">
+      <h2>🌟 Notes for You 🌟</h2>
+      <p>✔ Always remember: your efforts matter, even if progress feels slow.</p>
+      <p>✔ Celebrate small wins – they lead to big victories.</p>
+      <p>✔ Mistakes are proof that you are trying, never fear them.</p>
+      <p>✔ Stay kind, because kindness always comes back.</p>
+      <p>✔ Believe that the best is yet to come.</p>
     </div>
 
-    <script>
-        function showSurprise() {
-            document.querySelector(".start-btn").style.display = "none";
-            document.querySelector(".container").style.display = "flex";
-            launchFlowers();
-            setInterval(launchFlowers, 5000);
-        }
+    <div class="section">
+      <h2>💬 A Friendly Message</h2>
+      <p>Life has its ups and downs, but every year brings fresh beginnings. On your special day, I just want to say: you’re appreciated, you matter, and you deserve happiness in everything you do. Stay motivated, keep smiling, and never stop dreaming. 🌈</p>
+    </div>
 
-        function launchFlowers() {
-            const flowers = ["🌸", "🌹", "🌼", "💐", "🌷"];
-            for (let i = 0; i < 20; i++) {
-                const flower = document.createElement("div");
-                flower.className = "confetti";
-                flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-                flower.style.left = Math.random() * window.innerWidth + "px";
-                flower.style.animationDuration = (Math.random() * 3 + 3) + "s";
-                flower.style.fontSize = (Math.random() * 15 + 20) + "px";
-                document.body.appendChild(flower);
+    <h2 style="margin-top:30px; animation:fadeIn 2s ease forwards; color:#ffeef3;">
+      🌼 Keep shining, keep inspiring, and have a wonderful year ahead! 🌼
+    </h2>
+  </div>
 
-                flower.addEventListener("animationend", () => flower.remove());
-            }
-        }
-    </script>
+  <script>
+    function showSurprise() {
+      document.querySelector(".start-btn").style.display = "none";
+      document.querySelector(".container").style.display = "flex";
+      launchFlowers();
+      setInterval(launchFlowers, 5000);
+      setInterval(launchHearts, 2500);
+    }
+
+    function launchFlowers() {
+      const flowers = ["🌸", "🌼", "🌷", "🍀", "🌻"];
+      for (let i = 0; i < 12; i++) {
+        const flower = document.createElement("div");
+        flower.className = "confetti";
+        flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        flower.style.fontSize = (Math.random() * 12 + 18) + "px";
+        document.body.appendChild(flower);
+        flower.addEventListener("animationend", () => flower.remove());
+      }
+    }
+
+    function launchHearts() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "🤍";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = (Math.random() * 15 + 14) + "px";
+      document.body.appendChild(heart);
+      heart.addEventListener("animationend", () => heart.remove());
+    }
+  </script>
 
 </body>
-
 </html>
