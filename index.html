@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Special Surprise</title>
+  <title>Happy Birthday Haniya</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -15,6 +15,7 @@
       overflow-x: hidden;
       color: #fff;
       margin: 0;
+      position: relative;
     }
 
     @keyframes gradientShift {
@@ -37,14 +38,33 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      font-size: clamp(1.6em, 6vw, 2.5em);
-      margin-bottom: 15px;
-      color: #fff5f7;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-      animation: fadeIn 2s ease forwards;
+  font-size: clamp(1.8em, 6vw, 2.8em);
+  margin-bottom: 15px;
+  color: #fdf0f5; /* very soft blush white */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); /* subtle elegant shadow */
+  animation: fadeIn 2s ease forwards;
+}
+
+
+
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 8px #ffadc6, 0 0 16px #ff6f91, 0 0 24px #ffadc6;
+      }
+
+      50% {
+        text-shadow: 0 0 14px #ffadc6, 0 0 24px #ff6f91, 0 0 34px #ffc6d9;
+      }
+
+      100% {
+        text-shadow: 0 0 8px #ffadc6, 0 0 16px #ff6f91, 0 0 24px #ffadc6;
+      }
     }
 
     p {
@@ -52,19 +72,7 @@
       margin: 8px 0;
       opacity: 0;
       animation: fadeUp 1.5s ease forwards;
-      line-height: 1.5;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      line-height: 1.6;
     }
 
     @keyframes fadeUp {
@@ -101,11 +109,11 @@
       margin-top: 25px;
       padding: 20px;
       background: rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
+      border-radius: 16px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
       max-width: 90%;
       width: 100%;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
       animation: fadeIn 2s ease forwards;
     }
 
@@ -113,11 +121,7 @@
       font-size: clamp(1.2em, 5vw, 1.8em);
       margin-bottom: 12px;
       color: #ffe4e9;
-    }
-
-    .section p {
-      font-size: clamp(0.95em, 4vw, 1.05em);
-      line-height: 1.5;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     }
 
     /* Confetti */
@@ -162,26 +166,86 @@
       height: 100vh;
       text-align: center;
       padding: 10px;
+      z-index: 2;
     }
 
     .start-btn button {
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-size: 1.2em;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff9770);
       color: #fff;
       cursor: pointer;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #ff7eb3;
+      }
+
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 25px #ff758c;
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #ff7eb3;
+      }
     }
 
     .start-btn button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      transform: scale(1.12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
-    /* iPhone 15 Pro Max specific adjustments */
+    /* Final message */
+    .final-message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fffafc;
+      font-weight: bold;
+      animation: heartbeat 1.8s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Floating sparkles background */
+    .sparkle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      animation: sparkleAnim 6s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes sparkleAnim {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* iPhone friendly adjustments */
     @media (max-width: 450px) {
       h1 {
         font-size: 1.8em;
@@ -210,7 +274,7 @@
   </div>
 
   <div class="container">
-    <h1>🎉 Happy Birthday 🎉</h1>
+    <h1>🎉 Happy Birthday Haniya 🎉</h1>
     <p>Wishing you good health, peace, and endless happiness.</p>
     <p>May this year bring success in every step you take.</p>
     <p>May your days be filled with kindness, smiles, and hope.</p>
@@ -243,6 +307,10 @@
     <h2 style="margin-top:30px; animation:fadeIn 2s ease forwards; color:#ffeef3;">
       🌼 Keep shining, keep inspiring, and have a wonderful year ahead! 🌼
     </h2>
+
+    <div class="final-message">
+      💖 Once again wishing you a happy life ahead Haniya 💖
+    </div>
   </div>
 
   <script>
@@ -252,6 +320,7 @@
       launchFlowers();
       setInterval(launchFlowers, 5000);
       setInterval(launchHearts, 2500);
+      setInterval(createSparkle, 1000);
     }
 
     function launchFlowers() {
@@ -277,7 +346,19 @@
       document.body.appendChild(heart);
       heart.addEventListener("animationend", () => heart.remove());
     }
+
+    function createSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.width = sparkle.style.height = Math.random() * 6 + 4 + "px";
+      sparkle.style.left = Math.random() * window.innerWidth + "px";
+      sparkle.style.top = window.innerHeight + "px";
+      sparkle.style.animationDuration = (Math.random() * 4 + 3) + "s";
+      document.body.appendChild(sparkle);
+      sparkle.addEventListener("animationend", () => sparkle.remove());
+    }
   </script>
 
 </body>
 </html>
+
